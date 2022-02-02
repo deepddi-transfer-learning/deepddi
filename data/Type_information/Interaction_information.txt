@@ -1,0 +1,114 @@
+Interaction type	Description	Subject	DDI type
+3	1	The risk or severity of congestive heart failure and hypotension can be increased when #Drug1 is combined with #Drug2.	Type_56
+2	2	#Drug1 may decrease the excretion rate of #Drug2 which could result in a higher serum level.	Type_53
+2	3	The serum concentration of #Drug2 can be increased when it is combined with #Drug1.	Type_52
+3	4	The risk or severity of anemia and severe leukopenia can be increased when #Drug2 is combined with #Drug1.	Type_50
+3	38	The risk or severity of sedation and somnolence can be increased when #Drug2 is combined with #Drug1.	Type_108
+2	6	The serum concentration of the active metabolites of #Drug1 can be increased when #Drug1 is used in combination with #Drug2.	Type_214
+3	7	The risk or severity of myopathy and rhabdomyolysis can be increased when #Drug1 is combined with #Drug2.	Type_211
+3	8	The risk or severity of rhabdomyolysis, myoglobinuria, and elevated creatine kinase (CPK) can be increased when #Drug2 is combined with #Drug1.	Type_218
+3	9	The risk or severity of QTc prolongation, torsade de pointes, hypokalemia, hypomagnesemia, and cardiac arrest can be increased when #Drug1 is combined with #Drug2.	Type_187
+2	10	The therapeutic efficacy of #Drug2 can be increased when used in combination with #Drug1.	Type_181
+2	11	#Drug1 may decrease the cardiotoxic activities of #Drug2.	Type_183
+2	12	#Drug1 may increase the hyperkalemic activities of #Drug2.	Type_188
+2	13	#Drug1 can cause a decrease in the absorption of #Drug2 resulting in a reduced serum concentration and potentially a decrease in efficacy.	Type_189
+3	14	The risk or severity of edema formation can be increased when #Drug1 is combined with #Drug2.	Type_44
+2	15	#Drug2 may decrease the sedative activities of #Drug1.	Type_45
+3	16	The risk or severity of angioedema can be increased when #Drug1 is combined with #Drug2.	Type_46
+2	17	The excretion of #Drug2 can be decreased when combined with #Drug1.	Type_47
+3	18	The risk of a hypersensitivity reaction to #Drug1 is increased when it is combined with #Drug2.	Type_41
+2	19	#Drug2 may increase the fluid retaining activities of #Drug1.	Type_43
+2	20	The serum concentration of #Drug1 can be decreased when it is combined with #Drug2.	Type_48
+2	21	#Drug1 may increase the hypertensive activities of #Drug2.	Type_49
+2	22	#Drug1 may increase the nephrotoxic activities of #Drug2.	Type_178
+2	23	The protein binding of #Drug2 can be decreased when combined with #Drug1.	Type_173
+3	24	The risk or severity of myopathy, rhabdomyolysis, and myoglobinuria can be increased when #Drug1 is combined with #Drug2.	Type_172
+2	25	#Drug2 may increase the hypotensive and central nervous system depressant (CNS depressant) activities of #Drug1.	Type_175
+2	26	#Drug2 may increase the central nervous system depressant (CNS depressant) and hypertensive activities of #Drug1.	Type_174
+2	27	#Drug1 may increase the respiratory depressant activities of #Drug2.	Type_176
+3	28	The risk or severity of rhabdomyolysis can be increased when #Drug2 is combined with #Drug1.	Type_197
+2	29	#Drug1 may increase the analgesic activities of #Drug2.	Type_190
+3	30	The risk or severity of bleeding can be increased when #Drug1 is combined with #Drug2.	Type_198
+3	31	The risk or severity of hyponatremia can be increased when #Drug2 is combined with #Drug1.	Type_70
+3	32	The risk or severity of hypotension, nitritoid reactions, facial flushing, nausea, and vomiting can be increased when #Drug1 is combined with #Drug2.	Type_72
+2	33	The serum concentration of the active metabolites of #Drug1 can be reduced when #Drug1 is used in combination with #Drug2 resulting in a loss in efficacy.	Type_76
+2	34	#Drug1 may increase the central nervous system depressant (CNS depressant) activities of #Drug2.	Type_79
+2	35	#Drug2 may increase the cardiotoxic activities of #Drug1.	Type_78
+3	36	The risk or severity of convulsion can be increased when #Drug2 is combined with #Drug1.	Type_3
+2	37	#Drug1 may increase the stimulatory activities of #Drug2.	Type_2
+2	5	#Drug2 may increase the atrioventricular blocking (AV block) activities of #Drug1.	Type_7
+2	39	#Drug1 may increase the vasoconstricting activities of #Drug2.	Type_109
+2	40	#Drug2 may decrease the antiplatelet activities of #Drug1.	Type_5
+2	41	#Drug1 may increase the adverse neuromuscular activities of #Drug2.	Type_4
+3	42	The risk or severity of QTc prolongation can be increased when #Drug1 is combined with #Drug2.	Type_104
+2	43	#Drug2 may increase the immunosuppressive activities of #Drug1.	Type_105
+2	44	#Drug2 may decrease the neuromuscular blocking activities of #Drug1.	Type_106
+2	45	#Drug1 may increase the antipsychotic activities of #Drug2.	Type_100
+3	46	The risk or severity of fluid retention can be increased when #Drug1 is combined with #Drug2.	Type_101
+2	47	#Drug2 may increase the antihypertensive activities of #Drug1.	Type_68
+2	48	The absorption of #Drug1 can be decreased when combined with #Drug2.	Type_66
+2	49	#Drug2 may decrease the bronchodilatory activities of #Drug1.	Type_67
+2	50	#Drug1 may decrease the anticoagulant activities of #Drug2.	Type_62
+2	51	#Drug1 may increase the myelosuppressive activities of #Drug2.	Type_60
+2	52	#Drug2 may increase the hypertensive and vasoconstricting activities of #Drug1.	Type_61
+2	53	#Drug1 may increase the QTc-prolonging activities of #Drug2.	Type_116
+3	54	The risk or severity of bradycardia can be increased when #Drug2 is combined with #Drug1.	Type_115
+3	55	The risk or severity of hypotension and neuromuscular blockade can be increased when #Drug1 is combined with #Drug2.	Type_111
+2	56	#Drug2 can cause an increase in the absorption of #Drug1 resulting in an increased serum concentration and potentially a worsening of adverse effects.	Type_110
+2	57	#Drug1 may increase the orthostatic hypotensive activities of #Drug2.	Type_93
+2	58	#Drug1 may increase the hypoglycemic activities of #Drug2.	Type_92
+2	59	#Drug2 may increase the photosensitizing activities of #Drug1.	Type_91
+2	60	#Drug1 may decrease the antihypertensive activities of #Drug2.	Type_97
+2	61	#Drug2 may increase the constipating activities of #Drug1.	Type_96
+2	62	#Drug2 may increase the bronchoconstrictory activities of #Drug1.	Type_95
+2	63	#Drug1 may increase the vasodilatory activities of #Drug2.	Type_94
+3	64	The risk or severity of hypertension can be increased when #Drug1 is combined with #Drug2.	Type_99
+2	65	#Drug1 may increase the hypotensive, nephrotoxic, and hyperkalemic activities of #Drug2.	Type_18
+2	66	#Drug2 may decrease the diuretic activities of #Drug1.	Type_13
+2	67	#Drug1 may increase the hypocalcemic activities of #Drug2.	Type_12
+2	68	#Drug2 may decrease effectiveness of #Drug1 as a diagnostic agent.	Type_11
+2	69	#Drug1 may increase the central neurotoxic activities of #Drug2.	Type_10
+2	70	#Drug1 may increase the antiplatelet activities of #Drug2.	Type_16
+2	71	#Drug1 may increase the dermatologic adverse activities of #Drug2.	Type_14
+2	72	#Drug1 may increase the neuromuscular blocking activities of #Drug2.	Type_122
+2	73	#Drug2 may increase the ulcerogenic activities of #Drug1.	Type_123
+2	74	The therapeutic efficacy of #Drug1 can be decreased when used in combination with #Drug2.	Type_238
+2	75	#Drug2 may increase the hypotensive activities of #Drug1.	Type_124
+2	76	#Drug1 may decrease the stimulatory activities of #Drug2.	Type_125
+2	77	The bioavailability of #Drug1 can be increased when combined with #Drug2.	Type_129
+2	78	#Drug2 may decrease the analgesic activities of #Drug1.	Type_140
+3	79	The risk or severity of hypokalemia can be increased when #Drug1 is combined with #Drug2.	Type_142
+2	80	#Drug1 may increase the anticoagulant activities of #Drug2.	Type_83
+2	81	#Drug2 may decrease the vasoconstricting activities of #Drug1.	Type_84
+3	82	The risk or severity of severe leukopenia can be increased when #Drug1 is combined with #Drug2.	Type_145
+3	83	The risk or severity of ototoxicity and nephrotoxicity can be increased when #Drug2 is combined with #Drug1.	Type_147
+2	84	#Drug1 may increase the myopathic rhabdomyolysis activities of #Drug2.	Type_148
+2	85	#Drug1 may increase the anticholinergic activities of #Drug2.	Type_89
+2	86	#Drug1 may increase the serotonergic activities of #Drug2.	Type_131
+2	87	#Drug1 may increase the excretion rate of #Drug2 which could result in a lower serum level and potentially a reduction in efficacy.	Type_132
+3	88	The risk or severity of myelosuppression can be increased when #Drug2 is combined with #Drug1.	Type_225
+2	89	The metabolism of #Drug2 can be decreased when combined with #Drug1.	Type_139
+3	90	The risk or severity of ventricular arrhythmias can be increased when #Drug2 is combined with #Drug1.	Type_151
+2	91	#Drug2 may increase the neuroexcitatory activities of #Drug1.	Type_156
+2	92	#Drug2 may increase the sedative activities of #Drug1.	Type_154
+2	93	#Drug1 may increase the ototoxic activities of #Drug2.	Type_82
+2	94	#Drug2 may increase the vasopressor activities of #Drug1.	Type_35
+2	95	#Drug2 may increase the hypokalemic activities of #Drug1.	Type_34
+2	96	#Drug1 may increase the arrhythmogenic activities of #Drug2.	Type_36
+2	97	#Drug1 may increase the thrombogenic activities of #Drug2.	Type_31
+2	98	#Drug1 may increase the hepatotoxic activities of #Drug2.	Type_30
+3	99	The risk or severity of hyperkalemia can be increased when #Drug1 is combined with #Drug2.	Type_33
+2	100	#Drug2 may increase the neurotoxic activities of #Drug1.	Type_32
+3	101	The risk or severity of myopathy can be increased when #Drug2 is combined with #Drug1.	Type_144
+3	102	The risk or severity of renal failure and hyperkalemia can be increased when #Drug2 is combined with #Drug1.	Type_39
+2	103	#Drug2 may increase the tachycardic activities of #Drug1.	Type_38
+2	104	The metabolism of #Drug1 can be increased when combined with #Drug2.	Type_85
+2	105	The bioavailability of #Drug1 can be decreased when combined with #Drug2.	Type_87
+2	106	#Drug1 may increase the hyperglycemic activities of #Drug2.	Type_169
+2	107	#Drug1 may increase the hypercalcemic activities of #Drug2.	Type_22
+3	108	The risk or severity of hypotension can be increased when #Drug1 is combined with #Drug2.	Type_23
+2	109	#Drug2 may increase the bradycardic activities of #Drug1.	Type_26
+3	110	The risk or severity of heart failure can be increased when #Drug2 is combined with #Drug1.	Type_27
+2	111	#Drug1 may increase the hyponatremic activities of #Drug2.	Type_24
+3	112	The risk or severity of serotonin syndrome can be increased when #Drug2 is combined with #Drug1.	Type_28
+3	113	The risk or severity of adverse effects can be increased when #Drug1 is combined with #Drug2.	Type_29

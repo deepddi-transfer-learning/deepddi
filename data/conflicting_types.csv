@@ -1,0 +1,17 @@
+type	sentence	action	perpetrator	category
+3	The serum concentration of #Drug1 can be increased when it is combined with #Drug2.	0	#Drug2	concentration
+6	The serum concentration of the active metabolites of #Drug2 can be increased when #Drug2 is used in combination with #Drug1.	0	#Drug1	concentration
+13	#Drug2 can cause a decrease in the absorption of #Drug1 resulting in a reduced serum concentration and potentially a decrease in efficacy.	1	#Drug2	concentration
+20	The serum concentration of #Drug2 can be decreased when it is combined with #Drug1.	1	#Drug1	concentration
+33	The serum concentration of the active metabolites of #Drug2 can be reduced when #Drug2 is used in combination with #Drug1 resulting in a loss in efficacy.	1	#Drug1	concentration
+48	The absorption of #Drug2 can be decreased when combined with #Drug1.	1	#Drug1	concentration
+56	#Drug1 can cause an increase in the absorption of #Drug2 resulting in an increased serum concentration and potentially a worsening of adverse effects.	0	#Drug1	concentration
+133	Coadministration may decrease the gastrointestinal absorption.	1	unknwon	concentration
+134	Coadministration may decrease the minimum alveolar concentration required for inhalation anesthetics.	1	unknwon	concentration
+137	Coadministration with #Drug1 may decrease the plasma concentrations of #Drug2.	1	#Drug1	concentration
+138	Coadministration with #Drug2 may decrease the serum concentrations of #Drug1.	1	#Drug2	concentration
+139	Coadministration with #Drug1 may delay the gastrointestinal absorption and reduce the peak plasma concentration of #Drug2.	1	#Drug1	concentration
+152	Coadministration with #Drug1 may increase the absorption and oral bioavailability of #Drug2.	0	#Drug1	concentration
+155	Coadministration with #Drug1 may increase the plasma concentrations of #Drug2.	0	#Drug1	concentration
+89	The metabolism of #Drug1 can be decreased when combined with #Drug2.	0	#Drug2	metabolism
+104	The metabolism of #Drug2 can be increased when combined with #Drug1.	1	#Drug1	metabolism
