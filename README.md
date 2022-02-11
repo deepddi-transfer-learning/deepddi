@@ -1,24 +1,24 @@
-# DeepDDI-X #
+# DeepDDI2 #
 #Project
 This project is to develop a framework that systematically predicts drug-drug interactions (DDIs).
 
 #Features
-- DeepDDI-X predicts DDIs using names of drug-drug pairs and their structural information (SMILES) as inputs.
-- DeepDDI-X predicts 201 DDI types in human-readable sentences and 4 levels of clinical severity as output.
+- DeepDDI2 predicts DDIs using names of drug-drug pairs and their structural information (SMILES) as inputs.
+- DeepDDI2 predicts 113 DDI types in human-readable sentences as output.
 
 ###Procedure
 **Note**: This source code was developed in Linux, and has been tested in Ubuntu 16.04
 
 1. Clone the repository
 
-        git clone https://github.com/kaistsystemsbiology/DeepDDIX/
+        git clone https://github.com/kaistsystemsbiology/DeepDDI2/
 
 2. Create and activate a conda environment
 
         conda env create -f environment.yml
         conda activate deepddi
 
-##Input files for the DeepDDI##
+##Input files for the DeepDDI2##
 Following working input files can be found in: `./data/`. These files were used for the data presented in the manuscript.
 
 #Example#
