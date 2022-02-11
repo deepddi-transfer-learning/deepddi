@@ -1,4 +1,5 @@
 # DeepDDI2 #
+
 #Project
 This project is to develop a framework that systematically predicts drug-drug interactions (DDIs).
 
@@ -11,7 +12,7 @@ This project is to develop a framework that systematically predicts drug-drug in
 
 1. Clone the repository
 
-        git clone https://github.com/kaistsystemsbiology/DeepDDI2/
+        git clone https://bitbucket.org/kaistsystemsbiology/deepddi2.git
 
 2. Create and activate a conda environment
 
