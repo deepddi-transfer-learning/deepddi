@@ -27,3 +27,4 @@ Following working input files can be found in: `./data/`. These files were used 
 python run_DeepDDI.py -i ./DDI_input.txt -o ./output
 ```
 
+Further details can be found in Supplementary Information.
