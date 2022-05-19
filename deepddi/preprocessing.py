@@ -10,12 +10,55 @@ from rdkit import DataStructs
 from rdkit.Chem import AllChem
 from rdkit import Chem
 import tqdm
+def parse_input(input_file):
+    parsed=open('data/parsed_input.txt','w+')
+    parsed.write('Prescription	Drug name	Smiles\n')
+    merged=pd.read_csv('data/Drug_info_combined.csv')
+    approved_drugs=set(merged['Name'].str.lower())
+    all_input=[]
+
+    with open(input_file, 'r') as fp:
+        for line in fp:
+            each_input=line.strip().lower()
+            if each_input in approved_drugs:
+                all_input.append(each_input)
+            else:
+                if each_input !='':
+                    print('Sorry, we can not find drug '+each_input)
+            
+    count=0
+    all_pair=list(itertools.combinations(all_input, 2))
+    if len(all_pair)<=2:
+        print('Please input at least two valid drugs')
+        exit()
+    for i,j in all_pair:
+        each_i=str(count)+'\t'
+        each_j=str(count)+'\t'
+    #     find the drug in the approved drug list
+        find_drug_1=merged.loc[merged['Name'].str.lower()==i]
+        find_drug_2=merged.loc[merged['Name'].str.lower()==j]
+
+        name_i = find_drug_1['Name'].values[0]+'\t'
+        name_j = find_drug_2['Name'].values[0]+'\t'
+        each_i += name_i
+        each_j += name_j
+        
+        smile_i=find_drug_1['Smiles'].values[0]+'\n'
+        smile_j=find_drug_2['Smiles'].values[0]+'\n'
+        
+        each_i+=smile_i
+        each_j+=smile_j
+        parsed.write(each_i)
+        parsed.write(each_j)
+        count+=1
+    parsed.close()
+    return 
+            
 
 def parse_DDI_input_file(input_file, output_file):
     drug_pair_info = {}
     drug_smiles_info = {}
     with open(input_file, 'r') as fp:
-        fp.readline()
         for line in fp:
             sptlist = line.strip().split('\t')
             prescription = sptlist[0].strip()
@@ -27,6 +70,7 @@ def parse_DDI_input_file(input_file, output_file):
                 drug_pair_info[prescription] = [drug_name]
             else:
                 drug_pair_info[prescription].append(drug_name)
+            
         
     out_fp = open(output_file, 'w')
     for each_prescription in drug_pair_info:

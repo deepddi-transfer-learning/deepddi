@@ -40,7 +40,8 @@ if __name__ == '__main__':
             drug_list.append(line.strip())
 
     input_file = '%s/DDI_input.txt' % (output_dir)
-    preprocessing.parse_DDI_input_file(raw_input_file, input_file)
+    parsed_input = preprocessing.parse_input(raw_input_file)
+    preprocessing.parse_DDI_input_file('data/parsed_input.txt', input_file)
     
     known_drug_similarity_file = './data/drug_similarity.csv'
     similarity_profile = known_drug_similarity_file
