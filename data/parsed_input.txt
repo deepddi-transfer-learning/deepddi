@@ -1,0 +1,13 @@
+Prescription	Drug name	Smiles
+0	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
+0	Formoterol	COC1=CC=C(CC(C)NCC(O)C2=CC(NC=O)=C(O)C=C2)C=C1
+1	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
+1	Olodaterol	COC1=CC=C(CC(C)(C)NC[C@H](O)C2=C3OCC(=O)NC3=CC(O)=C2)C=C1
+2	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
+2	Vitamin C	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
+3	Formoterol	COC1=CC=C(CC(C)NCC(O)C2=CC(NC=O)=C(O)C=C2)C=C1
+3	Olodaterol	COC1=CC=C(CC(C)(C)NC[C@H](O)C2=C3OCC(=O)NC3=CC(O)=C2)C=C1
+4	Formoterol	COC1=CC=C(CC(C)NCC(O)C2=CC(NC=O)=C(O)C=C2)C=C1
+4	Vitamin C	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
+5	Olodaterol	COC1=CC=C(CC(C)(C)NC[C@H](O)C2=C3OCC(=O)NC3=CC(O)=C2)C=C1
+5	Vitamin C	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
