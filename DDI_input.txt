@@ -1,5 +1,3 @@
 Ritonavir
-Formoterol
-Olodaterol
-Vitamin C
-abc
+Apple
+Orange

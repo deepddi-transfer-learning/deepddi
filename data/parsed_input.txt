@@ -1,13 +1,13 @@
 Prescription	Drug name	Smiles
 0	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
-0	Formoterol	COC1=CC=C(CC(C)NCC(O)C2=CC(NC=O)=C(O)C=C2)C=C1
+0	Apple(Sugars, total)	OC[C@H]1O[C@@](CO)(O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@@H]1O
 1	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
-1	Olodaterol	COC1=CC=C(CC(C)(C)NC[C@H](O)C2=C3OCC(=O)NC3=CC(O)=C2)C=C1
+1	Apple(SUCROSE|SUGAR)	OCC1OC(CO)(OC2OC(CO)C(O)C(O)C2O)C(O)C1O
 2	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
-2	Vitamin C	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
-3	Formoterol	COC1=CC=C(CC(C)NCC(O)C2=CC(NC=O)=C(O)C=C2)C=C1
-3	Olodaterol	COC1=CC=C(CC(C)(C)NC[C@H](O)C2=C3OCC(=O)NC3=CC(O)=C2)C=C1
-4	Formoterol	COC1=CC=C(CC(C)NCC(O)C2=CC(NC=O)=C(O)C=C2)C=C1
-4	Vitamin C	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
-5	Olodaterol	COC1=CC=C(CC(C)(C)NC[C@H](O)C2=C3OCC(=O)NC3=CC(O)=C2)C=C1
-5	Vitamin C	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
+2	Apple(FRUCTOSE)	OCC(O)C(O)C(O)C(=O)CO.OCC1OC(O)(CO)C(O)C1O.OCC1(O)OCC(O)C(O)C1O
+3	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
+3	Orange(Sugars, total)	OC[C@H]1O[C@@](CO)(O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@@H]1O
+4	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
+4	Orange(SUGARS)	OC[C@H]1O[C@@](CO)(O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@@H]1O
+5	Ritonavir	CC(C)[C@H](NC(=O)N(C)CC1=CSC(=N1)C(C)C)C(=O)N[C@H](C[C@H](O)[C@H](CC1=CC=CC=C1)NC(=O)OCC1=CN=CS1)CC1=CC=CC=C1
+5	Orange(SUCROSE)	OCC1OC(CO)(OC2OC(CO)C(O)C(O)C2O)C(O)C1O

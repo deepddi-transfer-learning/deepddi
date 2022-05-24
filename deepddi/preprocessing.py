@@ -10,7 +10,68 @@ from rdkit import DataStructs
 from rdkit.Chem import AllChem
 from rdkit import Chem
 import tqdm
-def parse_input(input_file):
+
+def parse_food_input(input_file):
+    parsed=open('data/parsed_input.txt','w+')
+    parsed.write('Prescription	Drug name	Smiles\n')
+    food_compound = pd.read_csv('data/food_compounds.csv')
+    merged=pd.read_csv('data/Drug_info_combined.csv')
+    approved_drugs=set(merged['Name'].str.lower())
+    approved_foods=set(food_compound['orig_food_common_name'].str.lower())
+    all_input=[]
+
+    first_line=True
+    with open(input_file, 'r') as fp:
+        for line in fp:
+            each_input=line.strip().lower()
+            if first_line:
+                if each_input in approved_drugs:
+                    all_input.append(each_input)
+                    first_line=False
+                else:
+                    print('Sorry, we can not find drug(food): '+each_input)
+                    exit()
+            else:
+                if each_input in approved_foods:
+                    for i in range(3):
+                        all_input.append(each_input)
+                elif each_input !='':
+                        print('Sorry, we can not find drug(food): '+each_input)
+    
+    assert(len(all_input)>=2,'No valid pairs entered')
+
+    all_pair=[]
+    for i in range(1,len(all_input)):
+        all_pair.append((all_input[0],all_input[i]))
+    
+    count=0
+    for i,j in all_pair:
+        each_i=str(count)+'\t'
+        each_j=str(count)+'\t'
+    #     find the drug in the approved drug list
+        find_drug_1=merged.loc[merged['Name'].str.lower()==i]
+        find_drug_2=food_compound.loc[food_compound['orig_food_common_name'].str.lower()==j]
+
+        name_i = find_drug_1['Name'].values[0]+'\t'
+        name_j = find_drug_2['orig_food_common_name'].values[count%3]+'('+find_drug_2['orig_source_name'].values[count%3]+')'+'\t'
+        each_i += name_i
+        each_j += name_j
+        
+        smile_i=find_drug_1['Smiles'].values[0]+'\n'
+        smile_j = find_drug_2['cas_number'].values[count%3]+'\n'
+        
+        each_i+=smile_i
+        each_j+=smile_j
+        parsed.write(each_i)
+        parsed.write(each_j)
+        count+=1
+    parsed.close()
+    return 
+
+
+    
+
+def parse_drug_input(input_file):
     parsed=open('data/parsed_input.txt','w+')
     parsed.write('Prescription	Drug name	Smiles\n')
     merged=pd.read_csv('data/Drug_info_combined.csv')
