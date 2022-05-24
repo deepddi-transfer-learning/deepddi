@@ -23,3 +23,8 @@ test2/
 covid_new_results_20210901/
 
 deepddi/.ipynb_checkpoints
+
+database/*
+
+!database/food_compounds_lookup.csv
+
