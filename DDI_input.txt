@@ -1,3 +1,90 @@
-Ritonavir
-Apple
-Orange
+acteoside
+hesperidin
+l-threonine
+choline
+Acetaminophen
+l-proline
+alpha-linolenic acid
+sodium
+folic acid
+l-ascorbic acid
+quercetin
+syringic acid
+caffeic acid
+(±)-erythro-isoleucine
+sugars
+retinol
+sucrose
+thiamine hydrochloride
+p-coumaric acid
+campesterol
+l-cystine
+d-fructose
+copper
+(s)-naringenin
+c18:1, n-9
+iron
+(r)-oxypeucedanin
+pyridoxine
+alpha-tocopherol
+7-methyl-3-methylene-1,6-octadiene
+apigenin
+limonene
+l-methionine
+isorhamnetin
+stigmasterol
+luteolin
+alpha-bergamotene
+6-methylscutellarein
+oleic acid
+epsilon-polylysine
+gentisic acid
+cholesterol
+eriodictyol 7-rutinoside
+selenium
+eupafolin
+glycine
+l-glutamic acid
+gamma-terpinene
+phosphorus
+l-alanine
+d-glucose
+manganese
+nitrogen
+4-hydroxybenzoic acid
+s-beta-bisabolene
+(±)-tryptophan
+neryl acetate
+zinc
+hesperetin
+l-serine
+vanillic acid
+pantothenic acid
+l-lysine
+jaceosidin
+riboflavine
+d-aspartic acid
+beta-sitosterol
+arginine
+(-)-isopulegol
+gallic acid
+l-isoleucine
+biotin
+thiamine
+nicotinic acid
+(z,z)-9,12-octadecadienoic acid
+l-leucine
+kaempferol
+cirsilineol
+potassium
+luteolin 7-o-diglucuronide
+calcium
+ferulic acid
+(e)-2-phenyl-2-butenal
+l-aspartic acid
+l-histidine
+cirsimaritin
+eupatorin
+eicosapentaenoic acid
+l-tyrosine
+beta-carotene
