@@ -54,7 +54,7 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
         fw.write(to_write)
 
 
-def run(input_json,interaction_type):
+def run(input_json,interaction_type,thres=SIGNIFICANCE):
     # INPUT: 
     #   input_json: the json file of input info
     #   interactioin_type: 'DFI' or 'DDI'
@@ -63,7 +63,7 @@ def run(input_json,interaction_type):
     ingest_input(input_json, interaction_type)
     cmd = ('python run_DeepDDI.py -i %s -o %s -t %s'%('DDI_input.txt', 'output',str(interaction_type))).split()
     subprocess.run(cmd)
-    # remove input.txt
+    return collect_output(thres)
 
 
 def format_output():
@@ -102,4 +102,18 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
         inner_out['side_effect'] = side_effect
         out['interations'].append(inner_out)
     return out
+
+# Example of calling DFI API
+dfi_sample_input = {'current_drug': {'drug_title': 'Bad Drug', 'drug_desc': '? Vitamin A '},
+ 'food': ['lemon', 'orange']}
+
+# Example of calling DDI API
+ddi_sample_input =  {'current_drug': {'drug_title': 'Good Drug', 'drug_desc': '! Biotin !'},
+ 'other_drug': [{'drug_title': 'So-so Drug', 'drug_desc': ' cool  Vitamin C '},
+                {'drug_title': 'Pain-Killer', 'drug_desc': ' very good Aspirin Acetaminophen'}]}
+
+# ALL you need to call is func 'run(input_json,type)'
+print(run(dfi_sample_input,'DFI'))
+# run(ddi_sample_input,'DDI')
+
     
