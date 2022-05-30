@@ -9,7 +9,7 @@ MODEL_DIR = '/Documents/GitHub/deepddi2/'
 INPUT_PATH = './DDI_input.txt'
 OUTPUT_DIR = './output'
 OUTPUT_TXT = 'output/Final_annotated_DDI_result.txt'
-SIGNIFICANCE = 0.9
+SIGNIFICANCE = 0.8
 DFI_INPUT_DRUGS = []
 
 def regex_search(desc, pools):
@@ -79,7 +79,6 @@ def format_output():
     pass
 
 def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
-    thres = 0.95
     res = pd.read_csv(out_txt,
                       sep='\t', 
                       header=0)[['drug1', 'drug2',
