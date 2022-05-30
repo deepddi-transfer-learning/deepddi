@@ -25,7 +25,8 @@ def parse_food_input(input_file):
         for line in fp:
             each_input=line.strip().lower()
             if first_line:
-                if each_input in approved_drugs:
+                compound=each_input.split('|')[1]
+                if compound in approved_drugs:
                     all_input.append(each_input)
                     first_line=False
                 else:
@@ -38,7 +39,7 @@ def parse_food_input(input_file):
                 elif each_input !='':
                         print('Sorry, we can not find drug(food): '+each_input)
     
-    assert(len(all_input)>=2,'No valid pairs entered')
+    assert len(all_input)>=2, 'No valid pairs entered'
 
     all_pair=[]
     for i in range(1,len(all_input)):
@@ -49,10 +50,11 @@ def parse_food_input(input_file):
         each_i=str(count)+'\t'
         each_j=str(count)+'\t'
     #     find the drug in the approved drug list
-        find_drug_1=merged.loc[merged['Name'].str.lower()==i]
+        drug_name,drug_com=i.split('|')
+        find_drug_1=merged.loc[merged['Name'].str.lower()==drug_com]
         find_drug_2=food_compound.loc[food_compound['orig_food_common_name'].str.lower()==j]
 
-        name_i = find_drug_1['Name'].values[0]+'\t'
+        name_i = drug_name+'('+drug_com+')'+'\t'
         name_j = find_drug_2['orig_food_common_name'].values[count%3]+'('+find_drug_2['orig_source_name'].values[count%3]+')'+'\t'
         each_i += name_i
         each_j += name_j
@@ -81,7 +83,8 @@ def parse_drug_input(input_file):
     with open(input_file, 'r') as fp:
         for line in fp:
             each_input=line.strip().lower()
-            if each_input in approved_drugs:
+            compound=each_input.split('|')[1]
+            if compound in approved_drugs:
                 all_input.append(each_input)
             else:
                 if each_input !='':
@@ -93,14 +96,16 @@ def parse_drug_input(input_file):
         print('Please input at least two valid drugs')
         exit()
     for i,j in all_pair:
+        drug_name_i,drug_com_i=i.split('|')
+        drug_name_j,drug_com_j=j.split('|')
         each_i=str(count)+'\t'
         each_j=str(count)+'\t'
     #     find the drug in the approved drug list
-        find_drug_1=merged.loc[merged['Name'].str.lower()==i]
-        find_drug_2=merged.loc[merged['Name'].str.lower()==j]
+        find_drug_1=merged.loc[merged['Name'].str.lower()==drug_com_i]
+        find_drug_2=merged.loc[merged['Name'].str.lower()==drug_com_j]
 
-        name_i = find_drug_1['Name'].values[0]+'\t'
-        name_j = find_drug_2['Name'].values[0]+'\t'
+        name_i = drug_name_i+'('+drug_com_i+')+\t'
+        name_j = drug_name_j+'('+drug_com_j+')+\t'
         each_i += name_i
         each_j += name_j
         
