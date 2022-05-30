@@ -101,7 +101,5 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
         inner_out['interaction_desc'] = interaction_desc
         inner_out['side_effect'] = side_effect
         out['interations'].append(inner_out)
-    if len(out['interations'])==0:
-        out='No obvious interactions found'
     return out
     
