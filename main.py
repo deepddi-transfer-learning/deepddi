@@ -73,11 +73,10 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
     else:
         drug_pools = pd.read_csv(compounds_path).Name
         food_pools = pd.read_csv(food_path).Name
-        
         for drug in input_json['drug_list']:
             DFI_INPUT_DRUGS.append(drug['drug_title'])
-            drug_search = regex_search(drug['drug_desc'], drug_pools)
-            
+            drug_search = regex_search(drug['drug_desc'].lower(), drug_pools)
+#             print(drug['drug_desc'], drug_search)
             if not drug_search:
                 print('Drug: %s not Found' % drug['drug_title'])
                 continue
@@ -93,10 +92,13 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
     # TODO handle not-found case           
     if os.path.exists(input_fp):
         os.remove(input_fp)
-
+    
     with open(input_fp, 'w') as fw:
-        fw.write(','.join(first_line) + '\n')
-        fw.write(','.join(second_line) + '\n')
+        fr = ','.join(first_line) + '\n'
+        sr = ','.join(second_line) + '\n'
+        print(fr, sr)
+        fw.write(fr)
+        fw.write(sr)
 
 
 def run(input_json,interaction_type,thres=SIGNIFICANCE):
@@ -152,7 +154,7 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
     return out
 
 # Example of calling DFI API
-dfi_sample_input = {'drug_list': [{'drug_title': 'Drug_C', 'drug_desc': '? Vitamin A '}, {'drug_title': 'Drug_D', 'drug_desc': '? Vitamin C '}],
+dfi_sample_input = {'drug_list': [{'drug_title': 'Drug_C', 'drug_desc': '? Aspirin '}, {'drug_title': 'Drug_D', 'drug_desc': '? Vitamin C '}],
  'food_list': ['lemon', 'orange']}
 
 # Example of calling DDI API
@@ -161,7 +163,7 @@ ddi_sample_input =  {'current_drug': {'drug_title': 'Good Drug', 'drug_desc': '!
                 {'drug_title': 'Drug_B', 'drug_desc': ' very good Aspirin Acetaminophen'}]}
 
 # ALL you need to call is func 'run(input_json,type)'
-# print(run(dfi_sample_input,'DFI'))
+print(run(dfi_sample_input,'DFI'))
 # print(run(ddi_sample_input,'DDI'))
 
     
