@@ -44,7 +44,7 @@ def regex_search(desc, pools):
     return out
 
 def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
-                 compounds_path = './database/Drug_info_combined.csv',
+                 compounds_path = './database/drug_info_combined.csv',
                  food_path = './database/food.csv'):
     assert interaction_type.lower() in ['ddi', 'dfi'], 'API not supported'
     first_line = []
