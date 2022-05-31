@@ -47,7 +47,7 @@ def parse_food_input(input_file):
         #     find the food in the approved food list
             
             each_i += name_i
-            each_j += food_name+'('+food_name+')'+'\t'
+            each_j += food_name+'('+food_comp+')'+'\t'
             
             find_food_2 = food_compound.loc[food_compound['name'].str.lower()==food_comp.lower()]
             smile_j = find_food_2['cas_number'].values[0]+'\n'

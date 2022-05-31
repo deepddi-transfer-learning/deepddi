@@ -4,8 +4,8 @@ import numpy as np
 import os
 import subprocess
 from collections import defaultdict
-# DDI
 
+# Authors: 
 MODEL_DIR = '/Documents/GitHub/deepddi2/'
 INPUT_PATH = './DDI_input.txt'
 OUTPUT_DIR = './output'
@@ -159,8 +159,8 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
         
         interaction_desc = row[5]
         side_effect = {}
-        side_effect['probability'] = row[2]
-        side_effect['side_effect_id'] = row[6]
+        # side_effect['probability'] = row[2]
+        side_effect['side_effect'] = row[6]
         inner_out['other_drug'] = other_drug
         inner_out['interaction_desc'] = interaction_desc
         inner_out['side_effect'] = side_effect
@@ -168,8 +168,8 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
     return out
 
 # Example of calling DFI API
-dfi_sample_input = {'drug_list': [{'drug_title': 'Drug C', 'drug_desc': '? Aspirin '}, {'drug_title': 'Drug D', 'drug_desc': '? Vitamin C '}],
- 'food_list': ['lemon', 'orange']}
+dfi_sample_input = {'drug_list': [{'drug_title': 'Drug C', 'drug_desc': '?   '}, {'drug_title': 'Drug D', 'drug_desc': '? Vitamin C '}],
+ 'food_list': ['lemon']}
 
 # Example of calling DDI API
 ddi_sample_input =  {'current_drug': {'drug_title': 'Good Drug', 'drug_desc': 'Vitamin C'},
@@ -178,6 +178,6 @@ ddi_sample_input =  {'current_drug': {'drug_title': 'Good Drug', 'drug_desc': 'V
 
 # ALL you need to call is func 'run(input_json,type)'
 # print(run(ddi_sample_input,'DDI'))
-print(run(ddi_sample_input,'DDI'))
+print(run(dfi_sample_input,'DFI'))
 
     
