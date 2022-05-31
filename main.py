@@ -4,8 +4,8 @@ import numpy as np
 import os
 import subprocess
 from collections import defaultdict
-# DDI
 
+# Authors: 
 MODEL_DIR = '/Documents/GitHub/deepddi2/'
 INPUT_PATH = './DDI_input.txt'
 OUTPUT_DIR = './output'
@@ -51,17 +51,17 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
     second_line = []
     # handle ddi
     if interaction_type.lower() == 'ddi':
-        drug_pools = pd.read_csv(compounds_path).Name
+        drug_pools = pd.read_csv(compounds_path).Name.str.lower()
         
         cur_desc = input_json['current_drug']['drug_desc'].lower()
         drug_title = input_json['current_drug']['drug_title']
         
-        drug_search = regex_search(cur_desc, drug_pools)
-        assert not drug_search, ('Drug: %s not Found' % drug_title)
+        drug_search = regex_search(cur_desc.lower(), drug_pools)
+        assert drug_search, ('Drug: %s not Found' % drug_title)
             
         first_line += [drug_title+'|'+i for i in drug_search]
         for drug in input_json['other_drug']:
-            DDI_OTHER_DRUGS.append(drug['drug_title'])
+            DDI_OTHER_DRUGS.append(drug['drug_title'].lower())
             other_desc = drug['drug_desc'].lower()
             other_search = regex_search(other_desc, drug_pools)
             
@@ -71,10 +71,10 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
             second_line += [drug['drug_title']+'|'+ i for i in other_search]
     # handle dfi
     else:
-        drug_pools = pd.read_csv(compounds_path).Name
+        drug_pools = pd.read_csv(compounds_path).Name.str.lower()
         food_pools = pd.read_csv(food_path).Name
         for drug in input_json['drug_list']:
-            DFI_INPUT_DRUGS.append(drug['drug_title'])
+            DFI_INPUT_DRUGS.append(drug['drug_title'].lower())
             drug_search = regex_search(drug['drug_desc'].lower(), drug_pools)
 #             print(drug['drug_desc'], drug_search)
             if not drug_search:
@@ -94,9 +94,8 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
         os.remove(input_fp)
     
     with open(input_fp, 'w') as fw:
-        fr = ','.join(first_line) + '\n'
-        sr = ','.join(second_line) + '\n'
-        print(fr, sr)
+        fr = '\t'.join(first_line) + '\n'
+        sr = '\t'.join(second_line) + '\n'
         fw.write(fr)
         fw.write(sr)
 
@@ -129,41 +128,56 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
                    (res.DDI_prob >= thres)]
     
     if DDI_OTHER_DRUGS:
-        temp = temp.loc[(res.drug1.str.contains('|'.join(DDI_OTHER_DRUGS))) |\
-                        (res.drug2.str.contains('|'.join(DDI_OTHER_DRUGS)))]
+        temp = temp.loc[(res.drug1.str.contains(r'|'.join(DDI_OTHER_DRUGS))) |\
+                        (res.drug2.str.contains(r'|'.join(DDI_OTHER_DRUGS)))]
         
     if DFI_INPUT_DRUGS:
-        temp = temp.loc[(res.drug1.str.contains('|'.join(DFI_INPUT_DRUGS))) |\
-                        (res.drug2.str.contains('|'.join(DFI_INPUT_DRUGS)))]
+        temp = temp.loc[(res.drug1.str.contains(r'|'.join(DFI_INPUT_DRUGS))) |\
+                        (res.drug2.str.contains(r'|'.join(DFI_INPUT_DRUGS)))]
     
     out = {}
     out['interactions'] = []
     for line in temp.iterrows():
         inner_out = {}
         row = line[1].values
-    #     print(row)
         other_drug = row[1] ###
+        #     print(row)
+        drug1=re.findall('(.*)\(.*$',row[0])[0]
+        drug2=re.findall('(.*)\(.*$',row[1])[0]
+        if DFI_INPUT_DRUGS:
+            if drug1 not in DFI_INPUT_DRUGS:
+                other_drug = drug1
+            elif drug2 not in DFI_INPUT_DRUGS:
+                other_drug = drug2
+            else:
+                other_drug = drug1 ### random
+        if DDI_OTHER_DRUGS:
+            if drug2 in DDI_OTHER_DRUGS:
+                other_drug = drug2
+            elif drug1 in DDI_OTHER_DRUGS:
+                other_drug = drug1
+        
         interaction_desc = row[5]
         side_effect = {}
-        side_effect['probability'] = row[2]
-        side_effect['side_effect_id'] = row[6]
+        # side_effect['probability'] = row[2]
+        side_effect['side_effect'] = row[6]
         inner_out['other_drug'] = other_drug
         inner_out['interaction_desc'] = interaction_desc
         inner_out['side_effect'] = side_effect
-        out['interations'].append(inner_out)
+        out['interactions'].append(inner_out)
     return out
 
 # Example of calling DFI API
-dfi_sample_input = {'drug_list': [{'drug_title': 'Drug_C', 'drug_desc': '? Aspirin '}, {'drug_title': 'Drug_D', 'drug_desc': '? Vitamin C '}],
- 'food_list': ['lemon', 'orange']}
+dfi_sample_input = {'drug_list': [{'drug_title': 'Drug C', 'drug_desc': '?   '}, {'drug_title': 'Drug D', 'drug_desc': '? Vitamin C '}],
+ 'food_list': ['lemon']}
 
 # Example of calling DDI API
-ddi_sample_input =  {'current_drug': {'drug_title': 'Good Drug', 'drug_desc': '! Biotin !'},
- 'other_drug': [{'drug_title': 'Drug_A', 'drug_desc': ' cool  Vitamin C '},
-                {'drug_title': 'Drug_B', 'drug_desc': ' very good Aspirin Acetaminophen'}]}
+ddi_sample_input =  {'current_drug': {'drug_title': 'Good Drug', 'drug_desc': 'Vitamin C'},
+ 'other_drug': [{'drug_title': 'Drug A', 'drug_desc': ' cool  Vitamin A '},
+                {'drug_title': 'Drug B', 'drug_desc': ' very good Aspirin Acetaminophen'}]}
 
 # ALL you need to call is func 'run(input_json,type)'
-print(run(dfi_sample_input,'DFI'))
 # print(run(ddi_sample_input,'DDI'))
+print(run(dfi_sample_input,'DFI'))
 
     
