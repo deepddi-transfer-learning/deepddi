@@ -14,59 +14,49 @@ import tqdm
 def parse_food_input(input_file):
     parsed=open('data/parsed_input.txt','w+')
     parsed.write('Prescription	Drug name	Smiles\n')
-    food_compound = pd.read_csv('data/food_compounds.csv')
-    merged=pd.read_csv('data/Drug_info_combined.csv')
-    approved_drugs=set(merged['Name'].str.lower())
-    approved_foods=set(food_compound['orig_food_common_name'].str.lower())
-    all_input=[]
+    food_compound = pd.read_csv('database/food_compounds_lookup.csv')
+    merged=pd.read_csv('database/drug_info_combined.csv')
+    all_d=[]
+    all_f=[]
 
     first_line=True
     with open(input_file, 'r') as fp:
         for line in fp:
-            each_input=line.strip().lower()
+            each_input=[i.lower() for i in line.strip().split('\t')]
             if first_line:
-                compound=each_input.split('|')[1]
-                if compound in approved_drugs:
-                    all_input.append(each_input)
-                    first_line=False
-                else:
-                    print('Sorry, we can not find drug(food): '+each_input)
-                    exit()
+                for i in each_input:
+                    all_d.append(i)
+                first_line=False                      
             else:
-                if each_input in approved_foods:
-                    for i in range(3):
-                        all_input.append(each_input)
-                elif each_input !='':
-                        print('Sorry, we can not find drug(food): '+each_input)
+                for i in each_input:
+                    all_f.append(i)
     
-    assert len(all_input)>=2, 'No valid pairs entered'
-
-    all_pair=[]
-    for i in range(1,len(all_input)):
-        all_pair.append((all_input[0],all_input[i]))
-    
+    assert len(all_d)>=1 and len(all_f)>=1, 'No valid pairs entered'
     count=0
-    for i,j in all_pair:
-        each_i=str(count)+'\t'
-        each_j=str(count)+'\t'
-    #     find the drug in the approved drug list
-        drug_name,drug_com=i.split('|')
-        find_drug_1=merged.loc[merged['Name'].str.lower()==drug_com]
-        find_drug_2=food_compound.loc[food_compound['orig_food_common_name'].str.lower()==j]
-
+    for i in all_d:
+        drug_name,drug_com=i.strip().lower().split('|')
         name_i = drug_name+'('+drug_com+')'+'\t'
-        name_j = find_drug_2['orig_food_common_name'].values[count%3]+'('+find_drug_2['orig_source_name'].values[count%3]+')'+'\t'
-        each_i += name_i
-        each_j += name_j
-        
+        find_drug_1=merged.loc[merged['Name'].str.lower()==drug_com.lower()]
         smile_i=find_drug_1['Smiles'].values[0]+'\n'
-        smile_j = find_drug_2['cas_number'].values[count%3]+'\n'
-        
-        each_i+=smile_i
-        each_j+=smile_j
-        parsed.write(each_i)
-        parsed.write(each_j)
-        count+=1
+
+        for j in all_f:
+            food_name,food_comp=j.strip().lower().split('|')
+            
+            each_i=str(count)+'\t'
+            each_j=str(count)+'\t'
+        #     find the food in the approved food list
+            
+            each_i += name_i
+            each_j += food_name+'('+food_name+')'+'\t'
+            
+            find_food_2 = food_compound.loc[food_compound['name'].str.lower()==food_comp.lower()]
+            smile_j = find_food_2['cas_number'].values[0]+'\n'
+            
+            each_i+=smile_i
+            each_j+=smile_j
+            parsed.write(each_i)
+            parsed.write(each_j)
+            count+=1
     parsed.close()
     return 
 
@@ -78,45 +68,45 @@ def parse_drug_input(input_file):
     parsed.write('Prescription	Drug name	Smiles\n')
     merged=pd.read_csv('data/Drug_info_combined.csv')
     approved_drugs=set(merged['Name'].str.lower())
-    all_input=[]
+    current_drug=[]
+    other_drugs=[]
 
+    first_line=True
     with open(input_file, 'r') as fp:
         for line in fp:
-            each_input=line.strip().lower()
-            compound=each_input.split('|')[1]
-            if compound in approved_drugs:
-                all_input.append(each_input)
+            if first_line:
+                current_drug=line.strip().split('\t')
+                first_line=False
             else:
-                if each_input !='':
-                    print('Sorry, we can not find drug '+each_input)
-            
-    count=0
-    all_pair=list(itertools.combinations(all_input, 2))
-    if len(all_pair)<=2:
-        print('Please input at least two valid drugs')
-        exit()
-    for i,j in all_pair:
-        drug_name_i,drug_com_i=i.split('|')
-        drug_name_j,drug_com_j=j.split('|')
-        each_i=str(count)+'\t'
-        each_j=str(count)+'\t'
-    #     find the drug in the approved drug list
-        find_drug_1=merged.loc[merged['Name'].str.lower()==drug_com_i]
-        find_drug_2=merged.loc[merged['Name'].str.lower()==drug_com_j]
+                other_drugs=line.strip().split('\t')
 
-        name_i = drug_name_i+'('+drug_com_i+')+\t'
-        name_j = drug_name_j+'('+drug_com_j+')+\t'
-        each_i += name_i
-        each_j += name_j
-        
-        smile_i=find_drug_1['Smiles'].values[0]+'\n'
-        smile_j=find_drug_2['Smiles'].values[0]+'\n'
-        
-        each_i+=smile_i
-        each_j+=smile_j
-        parsed.write(each_i)
-        parsed.write(each_j)
-        count+=1
+    count=0
+    for i in current_drug:
+        drug_name_i,drug_com_i=i.strip().lower().split('|')
+        name_i = drug_name_i+'('+drug_com_i+')'+'\t'
+        find_drug_1=merged.loc[merged['Name'].str.lower()==drug_com_i]
+
+        for j in other_drugs:
+            drug_name_j,drug_com_j=j.strip().lower().split('|')
+
+            each_i=str(count)+'\t'
+            each_j=str(count)+'\t'
+        #     find the drug in the approved drug list
+            find_drug_2=merged.loc[merged['Name'].str.lower()==drug_com_j]
+
+            name_j = drug_name_j+'('+drug_com_j+')'+'\t'
+
+            each_i += name_i
+            each_j += name_j
+            
+            smile_i=find_drug_1['Smiles'].values[0]+'\n'
+            smile_j=find_drug_2['Smiles'].values[0]+'\n'
+            
+            each_i+=smile_i
+            each_j+=smile_j
+            parsed.write(each_i)
+            parsed.write(each_j)
+            count+=1
     parsed.close()
     return 
             

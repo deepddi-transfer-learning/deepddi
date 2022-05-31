@@ -1,3 +1,2 @@
-Bad Drug|Acetaminophen
-lemon
-orange
+Good Drug|vitamin c
+Drug A|vitamin a	Drug B|acetaminophen

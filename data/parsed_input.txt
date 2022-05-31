@@ -1,13 +1,5 @@
 Prescription	Drug name	Smiles
-0	bad drug(acetaminophen)	CC(=O)NC1=CC=C(O)C=C1
-0	Lemon(ISOPULEGOL|ISOPULEGOLE)	C[C@@H]1CC[C@H]([C@H](O)C1)C(C)=C
-1	bad drug(acetaminophen)	CC(=O)NC1=CC=C(O)C=C1
-1	Lemon(Sugars, total)	OC[C@H]1O[C@@](CO)(O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@@H]1O
-2	bad drug(acetaminophen)	CC(=O)NC1=CC=C(O)C=C1
-2	Lemon(POTASSIUM)	[K+]
-3	bad drug(acetaminophen)	CC(=O)NC1=CC=C(O)C=C1
-3	Orange(Sugars, total)	OC[C@H]1O[C@@](CO)(O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@@H]1O
-4	bad drug(acetaminophen)	CC(=O)NC1=CC=C(O)C=C1
-4	Orange(SUGARS)	OC[C@H]1O[C@@](CO)(O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@@H]1O
-5	bad drug(acetaminophen)	CC(=O)NC1=CC=C(O)C=C1
-5	Orange(SUCROSE)	OCC1OC(CO)(OC2OC(CO)C(O)C(O)C2O)C(O)C1O
+0	good drug(vitamin c)	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
+0	drug a(vitamin a)	C\C(=C/CO)\C=C\C=C(/C)\C=C\C1=C(C)CCCC1(C)C
+1	good drug(vitamin c)	[H][C@@]1(OC(=O)C(O)=C1O)[C@@H](O)CO
+1	drug b(acetaminophen)	CC(=O)NC1=CC=C(O)C=C1
