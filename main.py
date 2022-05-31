@@ -141,6 +141,22 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
         inner_out = {}
         row = line[1].values
         other_drug = row[1] ###
+        #     print(row)
+        drug1=re.findall('(.*)\(.*$',row[0])[0]
+        drug2=re.findall('(.*)\(.*$',row[1])[0]
+        if DFI_INPUT_DRUGS:
+            if drug1 not in DFI_INPUT_DRUGS:
+                other_drug = drug1
+            elif drug2 not in DFI_INPUT_DRUGS:
+                other_drug = drug2
+            else:
+                other_drug = drug1 ### random
+        if DDI_OTHER_DRUGS:
+            if drug2 in DDI_OTHER_DRUGS:
+                other_drug = drug2
+            elif drug1 in DDI_OTHER_DRUGS:
+                other_drug = drug1
+        
         interaction_desc = row[5]
         side_effect = {}
         side_effect['probability'] = row[2]
@@ -161,7 +177,7 @@ ddi_sample_input =  {'current_drug': {'drug_title': 'Good Drug', 'drug_desc': 'V
                 {'drug_title': 'Drug B', 'drug_desc': ' very good Aspirin Acetaminophen'}]}
 
 # ALL you need to call is func 'run(input_json,type)'
-print(run(ddi_sample_input,'DDI'))
 # print(run(ddi_sample_input,'DDI'))
+print(run(ddi_sample_input,'DDI'))
 
     
