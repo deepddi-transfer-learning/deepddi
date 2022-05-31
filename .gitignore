@@ -26,8 +26,12 @@ deepddi/.ipynb_checkpoints
 
 database/*
 
+data/*
+
 !database/food.csv
 
 !database/compounds.csv
 
 !database/food_compounds_lookup.csv
+
+!database/drug_info_combined.csv
