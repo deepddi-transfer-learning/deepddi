@@ -10,6 +10,9 @@ from rdkit.Chem import AllChem
 from rdkit import Chem
 from rdkit.Chem.Fingerprints import FingerprintMols
 import tqdm
+
+import re
+
 pd.set_option('mode.chained_assignment', None)
 
 
@@ -130,7 +133,7 @@ def read_side_effect_info(df, frequency=10):
             mean_frequency = each_df['MEAN']
             string_list.append('%s(%.1f%%)'%(side_effect, mean_frequency))
             
-        drug_side_effect_info[each_drug] = ';'.join(string_list)
+        drug_side_effect_info[each_drug.lower()] = ';'.join(string_list)
     
     return drug_side_effect_info
 
@@ -164,10 +167,13 @@ known_DDI_file, output_file, side_effect_information_file, model_threshold, stru
         Confidence_DDI = 0
         left_drug_side_effect = ''
         right_drug_side_effect = ''
-        if left_drug in drug_side_effect_info:
-            left_drug_side_effect = drug_side_effect_info[left_drug]
-        if right_drug in drug_side_effect_info:
-            right_drug_side_effect = drug_side_effect_info[right_drug]
+
+        # print(left_drug, right_drug, drug_side_effect_info)
+        left_comp, right_comp= re.findall('.*\((.*)\)$', left_drug)[0], re.findall('.*\((.*)\)$', right_drug)[0]
+        if left_comp in drug_side_effect_info:
+            left_drug_side_effect = drug_side_effect_info[left_comp]
+        if right_comp in drug_side_effect_info:
+            right_drug_side_effect = drug_side_effect_info[right_comp]
 
         if score-std/2 > model_threshold:
             Confidence_DDI = 1
@@ -186,6 +192,7 @@ known_DDI_file, output_file, side_effect_information_file, model_threshold, stru
         fp.write('%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n'%(prescription, drug_pair, DDI_type, sentence, 
         score, std, Confidence_DDI, left_drug_side_effect, right_drug_side_effect,
          left_drug_annotation_string, right_drug_annotation_string, left_drug, right_drug))
+        # print(drug_pair, left_drug_side_effect, right_drug_side_effect)
     
     e = time.time()
 

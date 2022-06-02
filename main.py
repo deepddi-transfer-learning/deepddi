@@ -151,7 +151,7 @@ def collect_drug_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
         row = line[1].values
         other_drug = row[1]
         cur_drug = row[0]
-        print(row)
+#         print('-->', row)
         drug1=re.findall('(.*)\(.*$',row[0])[0]
         drug2=re.findall('(.*)\(.*$',row[1])[0]
         
@@ -174,19 +174,23 @@ def collect_drug_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
             out['drug_interactions'].append(inner_out)
             processed_other_drugs.append(other_drug)
         
+#         print(type(row[6]), type(row[7]), row[0], cur_drug)
         side_effect_str = None
-        if row[0].lower() == cur_drug.lower(): # left
+        if (cur_drug.lower() in row[0].lower()) \
+                    and (isinstance(row[6], str)): # left
             side_effect_str = row[6]
             
-        elif row[1].lower() == cur_drug.lower(): # right
+        elif (cur_drug.lower() in row[1].lower()) \
+                    and (isinstance(row[7], str)): # right
             side_effect_str = row[7]
         
-        print(row[6], row[7])
         if side_effect_str:
-            pools = side_effect_str.split(',')
+#             print(side_effect_str)
+            pools = re.split(';|\s', side_effect_str)
+#             print(pools)
             for se in pools:
                 cur_drug_side_effect = {}
-                name, num = re.findall('^\w+',se)[0], re.findall('\((\d+)\)',se)[0]
+                name, num = re.findall('^\w+',se)[0], re.findall('\((.*)\)',se)[0]
                 cur_drug_side_effect['side_effect_name'] = name
                 cur_drug_side_effect['probability'] = num
                 out['cur_drug_side_effect'].append(cur_drug_side_effect)
