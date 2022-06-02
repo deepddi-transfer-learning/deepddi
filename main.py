@@ -13,6 +13,7 @@ OUTPUT_TXT = 'output/Final_annotated_DDI_result.txt'
 SIGNIFICANCE = 0.8
 DFI_INPUT_DRUGS = []
 DDI_OTHER_DRUGS = []
+DFI_FOOD_list = []
 
 food_comp = pd.read_csv('./database/food_compounds_lookup.csv')
 # pd.DataFrame({'Name': food.orig_food_common_name\
@@ -87,6 +88,7 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
             if not food_search:
                 print('Food: %s not Found' % food)
                 continue
+            DFI_FOOD_list.append(food)
             second_line += [food + '|' + i for i in food_search]
             
     # TODO handle not-found case           
@@ -110,7 +112,10 @@ def run(input_json,interaction_type,thres=SIGNIFICANCE):
     cmd = ('python run_DeepDDI.py -i %s -o %s -t %s'%('DDI_input.txt', 'output',str(interaction_type))).split()
     try:
         subprocess.run(cmd)
-        return collect_output(thres)
+        if interaction_type=='DFI':
+            return collect_food_output(thres)
+        else:
+            return collect_drug_output(thres)
     except AssertionError:
         return None
 
@@ -166,6 +171,46 @@ def collect_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
         inner_out['side_effect'] = side_effect
         out['interactions'].append(inner_out)
     return out
+
+def collect_food_output(thres = SIGNIFICANCE, out_txt = OUTPUT_TXT):
+    res = pd.read_csv(out_txt,
+                      sep='\t', 
+                      header=0)[['drug1', 'drug2',
+                                          'DDI_prob', 'DDI_prob_std',
+                                          'Confidence_DDI', 'Sentence',
+                                          'Side effects (left)',
+                                          'Side effects (right)']]
+    
+    temp = res.loc[(res.Confidence_DDI == 1) &\
+                   (res.DDI_prob >= thres)]
+    
+    if DDI_OTHER_DRUGS:
+        temp = temp.loc[(res.drug1.str.contains(r'|'.join(DDI_OTHER_DRUGS))) |\
+                        (res.drug2.str.contains(r'|'.join(DDI_OTHER_DRUGS)))]
+        
+    if DFI_INPUT_DRUGS:
+        temp = temp.loc[(res.drug1.str.contains(r'|'.join(DFI_INPUT_DRUGS))) |\
+                        (res.drug2.str.contains(r'|'.join(DFI_INPUT_DRUGS)))]
+    
+    out = []
+    temp['drug_name']=temp['drug1'].apply(lambda x: re.findall('^[^\(]+',x)[0])
+    for i in DFI_FOOD_LIST:
+        each_food={}
+        drug_interactions=[]
+        food_i=temp.loc[temp['drug2'].str.contains(i.lower())]
+        find_most=food_i[food_i.groupby('drug_name')['DDI_prob'].transform(max) == food_i['DDI_prob']]
+        for row in find_most.iterrows():
+            row=row[1]
+            each_row={}
+            each_row['other_drug_name']=row['drug_name']
+            each_row['interaction_desc']=row['Sentence']
+            each_row['probability'] = str(float(row['DDI_prob'])*100)[:4]+'%'
+            drug_interactions.append(each_row)
+        each_food['food_name']=i
+        each_food['drug_interactions']=drug_interactions
+        out.append(each_food)
+    return out
+collect_food_output()
 
 # Example of calling DFI API
 dfi_sample_input = {'drug_list': [{'drug_title': 'Drug C', 'drug_desc': '?   '}, {'drug_title': 'Drug D', 'drug_desc': '? Vitamin C '}],
