@@ -265,7 +265,7 @@ ddi_sample_input = {
 
 
 # ALL you need to call is func 'run(input_json,type)'
-# print(run(ddi_sample_input,'DDI'))
-print(run(dfi_sample_input,'DFI'))
+print(run(ddi_sample_input,'DDI'))
+# print(run(dfi_sample_input,'DFI'))
 
     
