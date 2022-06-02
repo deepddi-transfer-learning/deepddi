@@ -26,8 +26,6 @@ deepddi/.ipynb_checkpoints
 
 database/*
 
-data/*
-
 !database/food.csv
 
 !database/compounds.csv
