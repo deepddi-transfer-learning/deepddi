@@ -84,7 +84,7 @@ def ingest_input(input_json, interaction_type, input_fp = INPUT_PATH,
             first_line += [drug['drug_title'] + '|' + i for i in drug_search]
         
         for food in input_json['food_list']:
-            food_search = food2comp[food] 
+            food_search = food2comp[food.lower()] 
             if not food_search:
                 print('Food: %s not Found' % food)
                 continue
@@ -265,7 +265,7 @@ ddi_sample_input = {
 
 
 # ALL you need to call is func 'run(input_json,type)'
-print(run(ddi_sample_input,'DDI'))
-# print(run(dfi_sample_input,'DFI'))
+# print(run(ddi_sample_input,'DDI'))
+print(run(dfi_sample_input,'DFI'))
 
     
