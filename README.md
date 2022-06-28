@@ -2,7 +2,9 @@
 
 
 #Project Citation: [10.1073/pnas.1803294115](https://www.pnas.org/doi/full/10.1073/pnas.1803294115)
+
 #Code Reference: [deepddi](https://bitbucket.org/kaistsystemsbiology/deepddi/src/master/)
+
 #Project
 This project is to develop a framework that systematically predicts drug-drug interactions (DDIs).
 
