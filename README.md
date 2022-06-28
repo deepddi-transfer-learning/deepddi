@@ -1,5 +1,5 @@
 # DeepDDI2 #
-
+# Project Citation: [10.1073/pnas.1803294115](https://www.pnas.org/doi/full/10.1073/pnas.1803294115)
 #Project
 This project is to develop a framework that systematically predicts drug-drug interactions (DDIs).
 
