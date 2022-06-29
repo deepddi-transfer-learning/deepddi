@@ -14,7 +14,7 @@ This project is to develop a framework that systematically predicts drug-drug in
 
 1. Clone the repository
 
-        git clone https://bitbucket.org/kaistsystemsbiology/deepddi2.git
+        https://github.com/deepddi-transfer-learning/deepddi.git
 
 2. Create and activate a conda environment
 
@@ -29,4 +29,3 @@ Following working input files can be found in: `./data/`. These files were used 
 python run_DeepDDI.py -i ./DDI_input.txt -o ./output
 ```
 
-Further details can be found in Supplementary Information.
