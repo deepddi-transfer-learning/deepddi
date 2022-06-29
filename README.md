@@ -6,14 +6,11 @@
 #Code Reference: [deepddi](https://bitbucket.org/kaistsystemsbiology/deepddi/src/master/)
 
 #Project
-This project is to develop a framework that systematically predicts drug-drug interactions (DDIs).
+This project is to develop a framework that systematically predicts drug-drug interactions (DDIs) and drug-food ineractions(DFIs). This frame work is heavily built on top of https://bitbucket.org/kaistsystemsbiology/deepddi/src/master/
 
 #Features
-- DeepDDI2 predicts DDIs using names of drug-drug pairs and their structural information (SMILES) as inputs.
-- DeepDDI2 predicts 113 DDI types in human-readable sentences as output.
-
-###Procedure
-**Note**: This source code was developed in Linux, and has been tested in Ubuntu 16.04
+- DeepDDI predicts DDIs using a list of drugs information (description + name) in json format. 
+- DeepDDI predicts DFIs using single drug input (description + name) and a list of food names in json format.
 
 1. Clone the repository
 
